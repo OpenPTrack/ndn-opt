@@ -42,7 +42,7 @@ We have tested with NFD and ndn-cxx versions 0.3.4, and 0.4.0.
 <pre>
 $ git clone https://github.com/OpenPTrack/ndn-opt
 </pre>
-2. Build the package and make sure it is visible to ROS:
+2. Build the package and make sure it is visible to ROS (please do this for any new terminal windows that you open):
 <pre>
 $ cd publisher && catkin_make
 $ source devel/setup.bash
@@ -52,7 +52,7 @@ $ source devel/setup.bash
 $ rospack find ndn_utils
 &lt;repo_full_path&gt;/publisher/src/ros2ndn_converter
 </pre>
-4. Add shared library path to ROS environmental variable:
+4. Add shared library path to ROS environmental variable (please do this for any new terminal windows that you open):
 <pre>
     $ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/usr/local/lib
 </pre>
