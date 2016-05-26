@@ -20,7 +20,7 @@ Directories structure follows established [ROS guidelines](http://wiki.ros.org/R
 
 Please build NDN-CPP with Boost functions and shared pointers. We have tested with NDN-CPP versions 0.8, and 0.9. (Earlier versions of ndn-cpp, such as v0.6, will not work with this code!)
 
-For example,
+For example, clone and build NDN-CPP 0.9 with the following commands:
 
 <pre>
 $ git clone https://github.com/named-data/ndn-cpp
@@ -31,9 +31,11 @@ $ make
 $ sudo make install
 </pre>
 
-* [NDN forwarder](https://github.com/named-data/NFD/blob/master/docs/INSTALL.rst)
+* [NFD, the NDN forwarder](https://github.com/named-data/NFD/blob/master/docs/INSTALL.rst)
 
 Install NFD per the instructions [here](https://github.com/named-data/NFD/blob/master/docs/INSTALL.rst). 
+
+Create default NDN identity per the instructions [here, "how-to-configure-nfd-security" section](http://named-data.net/doc/NFD/current/FAQ.html#how-to-configure-nfd-security).
 
 We have tested with NFD and ndn-cxx versions 0.3.4, and 0.4.0.
 
