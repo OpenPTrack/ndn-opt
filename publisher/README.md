@@ -89,9 +89,9 @@ Sample track data received from OpenPTrack:
 </pre>
 
 The following assumptions were taken before designing a namespace:
-1. Track data has _nanosecond_-precision timestamps
-2. Track data arrives at non-constant rate
-3. Track data is very lightweight (around 80-100 bytes)
+  1. Track data has _nanosecond_-precision timestamps
+  2. Track data arrives at non-constant rate
+  3. Track data is very lightweight (around 80-100 bytes)
 
 Given that and the fact that NDN overhead may be about the size of the payload or even bigger, publishing individual tracks under separate names would be inefficient. A solution for that would be the bundling of tracks. However, in this way, consumer has to provide complex algorithms for re-bundling samples, buffer and sort them and retrieve the latest. Therefore, we'd stick with non-bundling approach, chosing simpler and faster implementation rather then optimized data transfering.
 
