@@ -16,6 +16,7 @@ TrackHintPublisher::TrackHintPublisher(const Parameters& parameters):
 parameters_(parameters)
 {
 	ROS_DEBUG_STREAM("TrackHintPublisher ctor");
+	debug_hint_time = 1;
 }
 
 TrackHintPublisher::~TrackHintPublisher()
@@ -46,7 +47,8 @@ TrackHintPublisher::publishTrackHint(const ros::WallTimerEvent& timerEvent)
 	{
 		ros::Time time = ros::Time::now();
 		int instanceStartTimeSec = NdnController::getInstanceStartTime();
-		int offsetMs = int((time.sec - instanceStartTimeSec)*1000 + double(time.nsec)/1000000.);
+		//int offsetMs = int((time.sec - instanceStartTimeSec)*1000 + double(time.nsec)/1000000.);
+		int offsetMs = debug_hint_time ++;
 		string jsonString = parameters_.activeTracks->getCurrentHintData();
 		stringstream hintName;
 

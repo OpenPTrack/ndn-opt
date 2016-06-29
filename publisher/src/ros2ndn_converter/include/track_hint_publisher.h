@@ -45,6 +45,8 @@ namespace ndn
 			Parameters parameters_;
 			ros::WallTimer sampleTimer_;
 
+			int debug_hint_time;
+
 			void
 			publishTrackHint(const ros::WallTimerEvent& timerEvent);
 		};
