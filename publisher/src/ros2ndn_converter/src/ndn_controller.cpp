@@ -19,20 +19,15 @@ using namespace std;
 static int instanceStartTime_ = 0;
 
 NdnController::NdnController(const Parameters& parameters):
-parameters_(parameters),
-keyChain_(new KeyChain())
+parameters_(parameters)
 {
 	ROS_DEBUG_STREAM("NdnController ctor");
 
-	// create face: zhehao: use UnixTransport for local host names
-	ROS_DEBUG_STREAM("creating face...");
-	if (parameters_.host != "localhost" && parameters_.host != "127.0.0.1") {
-		face_.reset(new Face(parameters_.host.c_str(), parameters_.port));
-	} else {
-		face_.reset(new Face());
-	}
+	face_ = parameters_.face;
+	keyChain_ = parameters_.keyChain;
+	certName_ = parameters_.certName;
 
-	face_->setCommandSigningInfo(*keyChain_, keyChain_->getDefaultCertificateName());
+	face_->setCommandSigningInfo(*keyChain_, certName_);
 
 	ROS_DEBUG_STREAM("face created. creating memory cache...");
 
@@ -132,7 +127,7 @@ NdnController::publishMessage(const string& name, const int& dataFreshnessMs, co
 	int ndnDataLength = (messageLength > parameters_.segmentLength)? parameters_.segmentLength : messageLength;
 	
 	ndnData.setContent((const uint8_t*)message, ndnDataLength);
-	keyChain_->sign(ndnData, keyChain_->getDefaultCertificateName());
+	keyChain_->sign(ndnData, certName_);
 
 	{
 		boost::mutex::scoped_lock scopedLock(faceMutex_);

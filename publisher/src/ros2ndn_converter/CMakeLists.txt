@@ -103,7 +103,7 @@ add_executable(ros2ndn_converter src/ros2ndn_converter.cpp src/ndn_controller.cp
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(ros2ndn_converter
-  ${catkin_LIBRARIES} json ndn-cpp
+  ${catkin_LIBRARIES} json ndn-cpp ndn_iot_cpp
 )
 
 #############

@@ -22,6 +22,9 @@
 #include <ndn-cpp/util/memory-content-cache.hpp>
 #include <ndn-cpp/security/key-chain.hpp>
 
+#include <ndn_iot_cpp/bootstrap.hpp>
+#include <time.h>
+
 #include <time.h>
 #include <ndn-cpp/c/common.h>
 
@@ -96,10 +99,14 @@
 		typedef struct _Parameters
 		{
 			ros::NodeHandle nh;
-			std::string host; 	// NDN daemon host name
-			int port; 			// NDN daemon port number
+			//std::string host; 	// NDN daemon host name
+			//int port; 			// NDN daemon port number
 			std::string prefix; // prefix to be registered
 			int segmentLength;	// NDN segment size
+			
+			ndn::Name certName;
+			ndn::ptr_lib::shared_ptr<ndn::Face> face;
+			ndn::ptr_lib::shared_ptr<ndn::KeyChain> keyChain;
 		} Parameters;
 
 		NdnController(const Parameters& parameters);
@@ -139,6 +146,7 @@
 		Parameters parameters_;
 		ptr_lib::shared_ptr<ndn::KeyChain> keyChain_;
 		ptr_lib::shared_ptr<ndn::Face> face_;
+		ndn::Name certName_;
 		ptr_lib::shared_ptr<MemoryContentCache> memoryCache_;
 		std::vector<ptr_lib::shared_ptr<PendingInterest> > pendingInterestTable_;
 
