@@ -131,7 +131,7 @@ main(int argc, char **argv)
   
   std::cout << "default certificate name is: " << certName.toUri() << std::endl;
 
-  bootstrap.requestProducerAuthorization(ndn::Name(std::string("/ndn/edu/ucla/remap")), "flow",
+  bootstrap.requestProducerAuthorization(ndn::Name(std::string("/home/flow/opt1/")), "flow",
     onRequestSuccess, 
     onRequestFailed);
 
